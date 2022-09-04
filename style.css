@@ -74,3 +74,8 @@ text-align: center;
 	text-align: center;
 	top: 70%;
 }
+
+#username {
+	color:white;
+	cursor: pointer;
+}
