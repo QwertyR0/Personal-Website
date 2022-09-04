@@ -4,5 +4,3 @@ function avatarClicked(){
 	else logo.src = "https://avatars.githubusercontent.com/u/75887918?v=4";
 	return;
 }
-
-//https://discord.gg/axTfQE4NFX
