@@ -1,0 +1,76 @@
+#thing {
+	position: absolute;
+	  width: 19.5%;
+	background-color: #1484f5;
+	height: 100%;
+	float: left;
+
+}
+
+.inthings {
+	position: relative;
+	top: 125px;
+}
+
+#logo {
+	position: relative;
+	top: 100px;
+	border-radius: 50%;
+	transition: 550ms;
+	border: 3px solid #bababa;
+	transform: scale(1.4);
+	-webkit-transform: scale(1.4);
+}
+
+#logo:hover {
+	transform: scale(1.6);
+	-webkit-transform: scale(1.6);
+	cursor: pointer;
+}
+.social {
+   margin: 5px;
+   transition: 100ms;
+}
+.social:hover {
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	cursor: pointer;
+}
+#haha:hover {
+	animation: color-change 1s infinite;
+	cursor: pointer;
+}
+
+@keyframes color-change {
+	  33% { color: red; }
+	  66% { color: blue; }
+	  99% { color: green; }
+	100% { color: red; }
+}
+
+#main {
+position: absolute;
+float: left;
+height: 100%;
+width: 80.5%;
+left: 19.5%
+}
+
+#featured {
+position: relative;
+text-align: center;
+}
+
+#cards {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: 10%;
+}
+
+#info {
+	position: relative;
+	text-align: center;
+	top: 70%;
+}
