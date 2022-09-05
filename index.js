@@ -21,3 +21,5 @@ function usernameClicked(){
 		name.textContent = nameContent;
 	}, 1000);
 }
+
+function haha(){ return window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank"); }
