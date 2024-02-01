@@ -1,0 +1,183 @@
+.projectslistDiv {
+    position: relative;
+    color: #fff;
+    font-size: 1.4rem;
+    font-family: "Playfair Display", serif;
+    margin-top: 10%;
+}
+
+.projectsTitle {
+    position: relative;
+    color: #fff;
+    font-size: 1.8rem;
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    margin: auto;
+    margin-top: 4%;
+}
+
+.projectsDiv {
+    position: relative;
+    color: #fff;
+    font-size: 1.4rem;
+    font-family: "Playfair Display", serif;
+    margin-top: 10%;
+}
+
+.cardNumberTextLeft {
+    position: absolute;
+    color: #fff;
+    font-size: 8rem;
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    margin-top: 0;
+    margin-left: 70%;
+}
+.cardNumberTextRight {
+    position: absolute;
+    color: #fff;
+    font-size: 8rem;
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    margin-top: 0;
+    margin-left: 25%;
+}
+
+.card {
+    position: relative;
+    color: #fff;
+    font-size: 1.4rem;
+    font-family: "Playfair Display", serif;
+    background-color: #7077A1;
+    border-radius: 10px;
+    width: 55%;
+    margin: 0 auto;
+    margin-bottom: 3%;
+    padding-bottom: 3%;
+    padding-top: 1%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+}
+
+.leftCard {
+    /* push the card to left if it has this class */
+    margin-left: 10%;
+}
+
+.rightCard {
+    /* push the card to right if it has this class */
+    margin-right: 10%;
+}
+
+.card h1 {
+    position: relative;
+    color: #fff;
+    font-size: 1.8rem;
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    margin: auto;
+    margin-top: 4%;
+}
+
+.card p {
+    position: relative;
+    color: #fff;
+    font-size: 1.4rem;
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    margin: auto;
+    max-width: 80%;
+    margin-top: 4%;
+}
+/*
+.card a {
+    position: relative;
+    color: #81a6d1;
+    font-size: 1.4rem;
+    font-family: "Playfair Display", serif;
+    text-align: center;
+    margin: auto;
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.card a:hover {
+    color: #5188c7;
+}
+*/
+
+.card a {
+    text-decoration: none;
+}
+
+.langIcon {
+    position: absolute;
+    font-family: "Playfair Display", serif;
+    width: 8%;
+    top: 4%;
+    left: 2.3%;
+}
+
+.card button {
+    align-items: center;
+    background-color: #81a6d1;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .25rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: "Playfair Display", serif;
+    font-size: 16px;
+    font-weight: 600;
+    justify-content: center;
+    line-height: 1.25;
+    margin: 0;
+    min-height: 3rem;
+    padding: calc(.875rem - 1px) calc(1.5rem - 1px);
+    position: relative;
+    text-decoration: none;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+    text-align: center;
+    margin: auto;
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.card button:hover {
+    transform: translateY(-1px);
+}
+
+.card button:active {
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
+}
+
+.projectImg {
+    position: relative;
+    width: 50%;
+    height: 50%;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    display: flex;
+}

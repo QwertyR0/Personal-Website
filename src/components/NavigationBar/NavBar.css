@@ -1,0 +1,37 @@
+#nb {
+    position: fixed; /* Added */
+    top: 0; /* Added */
+    height: 6%;
+    width: 100%;
+    z-index: 1;
+    background-color: #2D3250;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+}
+
+.NavTitle {
+    position: relative;
+    color: #fff;
+    font-size: 1.4rem;
+    font-family: "Playfair Display", serif;
+    top: -15%;
+    left: 10%;
+}
+
+.NavLinks {
+    position: relative;
+    top: 20%;
+    justify-content: space-between;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+button {
+    margin-right: 4rem;
+    cursor: pointer;
+}
+
+.a {
+    color: #fff;
+    text-decoration: none;
+}
