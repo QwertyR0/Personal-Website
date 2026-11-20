@@ -1,20 +1,1376 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="description" content="A personal website that I've made.">
-    <meta name="keywords" content="QwertyR0">
-    <meta name="author" content="QwertyR0 - Oğuz">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta property="og:title" content="Oğuz's Place" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://qwertyr0.is-a.dev/" />
-    <meta property="og:description" content="A personal website that I've made" />
-    <meta name="theme-color" content="#F6B17A" />
-    <title>Oğuz's place</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="artifact-type" content="narrative">
+  <meta name="design-style" content="canopy">
+  <title>Oğuz (QwertyR0) — Student Developer &amp; Biology Enthusiast</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500;600&family=Literata:ital,opsz,wght@0,7..72,400..700;1,7..72,400..600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2/src/regular/style.css">
+  <style>
+    :root {
+      color-scheme: dark;
+
+      /* 1. Canopy organic base adapted to 2. User-requested warm brown surfaces, cyan highlights, and natural green accents */
+      --background: #1b1511;               /* deep warm walnut-earth */
+      --surface-container-low: #271f19;    /* warm umber brown: primary cards */
+      --surface-container: #332820;        /* toasted clay-brown: buttons, nested panels */
+      --surface-container-high: #413329;   /* warm bark: hover states, pills */
+
+      /* Ink */
+      --on-surface: #f4ede3;               /* warm cream ivory: headings & body */
+      --on-surface-variant: #cdbfae;       /* warm sand: secondary copy */
+
+      /* Lines */
+      --outline: #8b7765;                  /* warm bark outline */
+      --outline-variant: #4c3d32;          /* soft umber divider */
+
+      /* Accents: natural green + cyan highlights */
+      --primary: #66c27a;                  /* natural canopy green */
+      --on-primary: #102415;               /* deep forest ink on green button */
+      --primary-container: #22402a;        /* deep leaf highlight card */
+      --on-primary-container: #dcf4e1;     /* soft leaf cream on highlight card */
+
+      --secondary: #5cd4e0;                /* cyan highlight */
+      --on-secondary: #0c2629;
+      --secondary-container: #1b3b40;      /* deep cyan-slate tag fill */
+      --on-secondary-container: #bdf3f8;   /* bright mist cyan text */
+
+      --tertiary: #d8a36a;                 /* warm ochre accent */
+      --tertiary-container: #43301d;
+      --on-tertiary-container: #f5d8b8;
+
+      /* Data series */
+      --data-1: #66c27a;
+      --data-2: #5cd4e0;
+      --data-3: #d8a36a;
+      --data-4: #a8876d;
+      --data-context: #6e5d4f;
+
+      /* Fonts */
+      --font-headline: 'Literata', serif;
+      --font-body: 'Nunito Sans', sans-serif;
+      --font-label: 'Geist Mono', monospace;
+
+      /* Shape */
+      --rounded: 0.75rem;
+      --rounded-lg: 1rem;                  /* 16px soft rounded corners */
+      --rounded-full: 9999px;
+
+      /* Style effects */
+      --shadow-soft: 0 6px 24px rgb(10 7 5 / 0.28);
+      --shadow-soft-hover: 0 12px 32px rgb(10 7 5 / 0.42);
+      --border-soft: 1px solid rgb(139 119 101 / 0.28);
+      --border-cyan: 1px solid rgb(92 212 224 / 0.38);
+      --border-green: 1px solid rgb(102 194 122 / 0.34);
+      --focus-glow: 0 0 0 3px rgb(92 212 224 / 0.35);
+
+      /* 3. Shared tokens */
+      --positive: #66c27a;
+      --warning: #e5b567;
+      --error: #f07b72;
+      --on-error: #2b0c09;
+      --focus: #5cd4e0;
+
+      /* Type scale (Narrative) */
+      --display-size: clamp(2.5rem, 1.5rem + 3.8vw, 4.25rem);
+      --headline-size: clamp(1.75rem, 1.25rem + 1.8vw, 2.5rem);
+      --subhead-size: clamp(1.2rem, 1.05rem + 0.5vw, 1.45rem);
+      --body-size: clamp(1.0625rem, 1rem + 0.2vw, 1.125rem);
+      --label-size: clamp(0.75rem, 0.72rem + 0.12vw, 0.8125rem);
+
+      /* Spacing scale */
+      --space-xs: 0.25rem;
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 1.5rem;
+      --space-xl: 2.5rem;
+      --space-2xl: 4rem;
+      --space-3xl: 6rem;
+
+      /* Motion */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+      --dur-micro: 120ms;
+      --dur-short: 220ms;
+      --dur-long: 420ms;
+    }
+
+    /* Base reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      overflow-x: clip;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+    header { position: static !important; }
+
+    body {
+      background-color: var(--background);
+      color: var(--on-surface);
+      font-family: var(--font-body);
+      font-size: var(--body-size);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .page-grid {
+      display: grid;
+      gap: var(--space-2xl);
+      padding: var(--space-lg) var(--space-lg) var(--space-2xl);
+      max-width: 1120px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+    .page-grid * { min-width: 0; }
+
+    /* Focus visibility */
+    :focus-visible {
+      outline: 2px solid var(--focus);
+      outline-offset: 2px;
+      box-shadow: var(--focus-glow);
+    }
+
+    /* Typography */
+    h1, h2, h3 {
+      font-family: var(--font-headline);
+      margin: 0;
+      color: var(--on-surface);
+      font-weight: 600;
+    }
+    p {
+      margin: 0;
+      max-width: 65ch;
+    }
+    .kicker {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--secondary);
+    }
+
+    /* Header & Navigation */
+    .site-header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--outline-variant);
+    }
+    .header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+    }
+    .brand-cluster {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .brand-name {
+      font-family: var(--font-headline);
+      font-size: var(--subhead-size);
+      font-weight: 700;
+      color: var(--on-surface);
+      text-decoration: none;
+    }
+    .brand-alias {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--secondary);
+      background: var(--secondary-container);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded-full);
+      border: var(--border-cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+    .nav-link {
+      color: var(--on-surface-variant);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);
+    }
+    .nav-link:hover {
+      background-color: var(--surface-container);
+      color: var(--secondary);
+    }
+
+    .menu-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-xs);
+      min-width: 44px;
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      background-color: var(--surface-container);
+      color: var(--on-surface);
+      border: var(--border-soft);
+      border-radius: var(--rounded);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+    .menu-toggle:hover {
+      background-color: var(--surface-container-high);
+    }
+
+    .mobile-drawer {
+      display: none;
+      flex-direction: column;
+      gap: var(--space-xs);
+      background: var(--surface-container-low);
+      border: var(--border-soft);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-sm);
+    }
+    .mobile-drawer.is-open {
+      display: flex;
+    }
+
+    /* Hero section */
+    .hero-section {
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+      gap: var(--space-xl);
+      align-items: start;
+      padding-top: var(--space-sm);
+    }
+    .hero-main {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .hero-title {
+      font-size: var(--display-size);
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+    .hero-greeting {
+      color: var(--data-1);
+    }
+    .hero-subtitle {
+      font-family: var(--font-headline);
+      font-size: var(--subhead-size);
+      font-weight: 500;
+      color: var(--primary);
+      line-height: 1.35;
+    }
+    .hero-copy {
+      color: var(--on-surface-variant);
+      font-size: var(--body-size);
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      padding-top: var(--space-xs);
+    }
+
+    /* Buttons */
+    .btn {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      font-weight: 700;
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-lg);
+      border-radius: var(--rounded);
+      border: 0;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      cursor: pointer;
+      transition: background-color var(--dur-short) var(--ease-out), transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out);
+    }
+    .btn:active {
+      transform: translateY(1px);
+    }
+    .btn-primary {
+      background-color: var(--primary);
+      color: var(--on-primary);
+    }
+    .btn-primary:hover {
+      background-color: var(--on-primary-container);
+      color: var(--on-primary);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background-color: var(--surface-container);
+      color: var(--on-surface);
+      border: var(--border-soft);
+    }
+    .btn-secondary:hover {
+      background-color: var(--surface-container-high);
+      color: var(--secondary);
+      transform: translateY(-1px);
+    }
+
+    /* Canopy-style Almanac Domain Strip & Summary Card */
+    .hero-panel {
+      background-color: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      border: var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .season-strip {
+      background-color: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .season-cells {
+      display: flex;
+      gap: var(--space-xs);
+    }
+    .season-cell {
+      font-family: var(--font-label);
+      font-size: 0.6875rem;
+      font-weight: 600;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded);
+      background-color: var(--surface-container-high);
+      color: var(--on-surface-variant);
+    }
+    .season-cell.is-green {
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+      border: var(--border-green);
+    }
+    .season-cell.is-cyan {
+      background-color: var(--secondary-container);
+      color: var(--on-secondary-container);
+      border: var(--border-cyan);
+    }
+    .panel-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .panel-list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: var(--space-md);
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--outline-variant);
+      font-size: 0.9375rem;
+    }
+    .panel-list li:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+    .panel-key {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .panel-val {
+      color: var(--on-surface);
+      font-weight: 600;
+      text-align: right;
+    }
+
+    /* Portfolio portrait */
+    .profile-picture {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center;
+      border-radius: var(--rounded);
+      border: var(--border-soft);
+      box-shadow: var(--shadow-soft);
+    }
+
+    /* Section framing */
+    .section-block {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+      scroll-margin-top: var(--space-lg);
+    }
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .section-title {
+      font-size: var(--headline-size);
+      line-height: 1.18;
+    }
+    .section-lede {
+      color: var(--on-surface-variant);
+    }
+
+    /* Interests section (Canopy leaf highlight + warm brown companion) */
+    .interests-wrapper {
+      container-type: inline-size;
+    }
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr));
+      gap: var(--space-lg);
+    }
+    @container (max-width: 680px) {
+      .interests-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background-color: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      border: var(--border-soft);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .card.is-leaf-highlight {
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+      border: var(--border-green);
+      box-shadow: var(--shadow-soft);
+    }
+    .card.is-leaf-highlight h3 {
+      color: var(--on-primary-container);
+    }
+    .card.is-leaf-highlight .kicker {
+      color: var(--primary);
+    }
+    .card.is-leaf-highlight p {
+      color: var(--on-primary-container);
+    }
+
+    .card-title {
+      font-size: var(--subhead-size);
+      line-height: 1.3;
+    }
+    .interest-pillars {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .interest-pillars li {
+      background-color: var(--surface-container);
+      border-radius: var(--rounded);
+      padding: var(--space-sm) var(--space-md);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .pillar-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .pillar-desc {
+      font-size: 0.9375rem;
+      color: var(--on-surface-variant);
+    }
+
+    /* Projects section */
+    .projects-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+    }
+    .filter-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .filter-btn {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 700;
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded-full);
+      background-color: var(--surface-container-low);
+      color: var(--on-surface-variant);
+      border: var(--border-soft);
+      cursor: pointer;
+      transition: background-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out), border-color var(--dur-short) var(--ease-out);
+    }
+    .filter-btn:hover {
+      background-color: var(--surface-container);
+      color: var(--on-surface);
+    }
+    .filter-btn[aria-pressed="true"] {
+      background-color: var(--secondary-container);
+      color: var(--on-secondary-container);
+      border: var(--border-cyan);
+    }
+    .project-count {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(310px, 100%), 1fr));
+      gap: var(--space-lg);
+    }
+    .project-card {
+      background-color: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-lg);
+      border: var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: var(--space-md);
+      transition: transform var(--dur-short) var(--ease-out), box-shadow var(--dur-short) var(--ease-out), background-color var(--dur-short) var(--ease-out);
+    }
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-soft-hover);
+      background-color: var(--surface-container);
+    }
+    .project-card[hidden] {
+      display: none;
+    }
+
+    .project-top {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .project-badge {
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--rounded-full);
+      background-color: var(--secondary-container);
+      color: var(--on-secondary-container);
+      border: var(--border-cyan);
+    }
+    .project-badge.is-green {
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+      border: var(--border-green);
+    }
+    .project-badge.is-ochre {
+      background-color: var(--tertiary-container);
+      color: var(--on-tertiary-container);
+      border: var(--border-soft);
+    }
+    .project-index {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--on-surface-variant);
+    }
+    .project-desc {
+      color: var(--on-surface-variant);
+      font-size: 0.975rem;
+    }
+
+    .project-footer {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      padding-top: var(--space-sm);
+      border-top: 1px solid var(--outline-variant);
+    }
+    .project-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-sm);
+      flex-wrap: wrap;
+    }
+    .note-toggle {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 700;
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded);
+      background-color: var(--surface-container-high);
+      color: var(--on-surface);
+      border: var(--border-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .note-toggle:hover {
+      color: var(--secondary);
+    }
+    .project-domain {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--primary);
+    }
+
+    .project-details {
+      background-color: var(--background);
+      border-radius: var(--rounded);
+      padding: var(--space-md);
+      border: var(--border-soft);
+      font-size: 0.9rem;
+      color: var(--on-surface-variant);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+    }
+    .project-details[hidden] {
+      display: none;
+    }
+
+    .inline-copy-btn {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      min-height: 44px;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded);
+      background-color: var(--surface-container);
+      color: var(--secondary);
+      border: var(--border-cyan);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      align-self: flex-start;
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out);
+    }
+    .inline-copy-btn:hover {
+      background-color: var(--secondary-container);
+    }
+
+    /* Contact section */
+    .contact-wrapper {
+      container-type: inline-size;
+    }
+    .contact-panel {
+      background-color: var(--surface-container-low);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-xl);
+      border: var(--border-soft);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: var(--space-xl);
+      align-items: center;
+    }
+    @container (max-width: 680px) {
+      .contact-panel {
+        grid-template-columns: 1fr;
+        padding: var(--space-lg);
+      }
+    }
+    .contact-copy {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .internship-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      align-self: flex-start;
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      font-weight: 600;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--rounded-full);
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+      border: var(--border-green);
+    }
+    .contact-channels {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+    .channel-row {
+      background-color: var(--surface-container);
+      border-radius: var(--rounded-lg);
+      padding: var(--space-md);
+      border: var(--border-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+    .channel-info {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+    .channel-label {
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+      color: var(--secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .channel-value {
+      font-family: var(--font-label);
+      font-size: 0.95rem;
+      color: var(--on-surface);
+      word-break: break-word;
+    }
+    .channel-action {
+      font-family: var(--font-body);
+      font-size: 0.875rem;
+      font-weight: 700;
+      min-height: 44px;
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--rounded);
+      background-color: var(--surface-container-high);
+      color: var(--on-surface);
+      border: var(--border-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      cursor: pointer;
+      transition: background-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+    }
+    .channel-action:hover {
+      background-color: var(--secondary-container);
+      color: var(--on-secondary-container);
+    }
+    .channel-action.is-copied {
+      background-color: var(--primary-container);
+      color: var(--on-primary-container);
+      border: var(--border-green);
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Footer */
+    .site-footer {
+      padding-top: var(--space-lg);
+      border-top: 1px solid var(--outline-variant);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+      color: var(--on-surface-variant);
+      font-family: var(--font-label);
+      font-size: var(--label-size);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity var(--dur-long) var(--ease-out), transform var(--dur-long) var(--ease-out);
+    }
+    .reveal.is-pending {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    /* Responsive layout */
+    @media (max-width: 820px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+      }
+      .interests-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-grid {
+        padding: var(--space-md);
+        gap: var(--space-xl);
+      }
+      .nav-links {
+        display: none;
+      }
+      .menu-toggle {
+        display: inline-flex;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-grid">
+    <!-- 1. Header -->
+    <header class="site-header">
+      <div class="header-bar">
+        <div class="brand-cluster">
+          <a href="#top" class="brand-name">Oğuz</a>
+          <span class="brand-alias">QwertyR0</span>
+        </div>
+
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#interests" class="nav-link">Interests</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </nav>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menu-toggle-btn"
+          aria-expanded="false"
+          aria-controls="mobile-nav-drawer"
+          onclick="toggleMobileMenu()"
+        >
+          <i class="ph ph-list" aria-hidden="true"></i>
+          <span>Menu</span>
+        </button>
+      </div>
+
+      <nav class="mobile-drawer" id="mobile-nav-drawer" aria-label="Mobile navigation">
+        <a href="#interests" class="nav-link" onclick="closeMobileMenu()">Interests</a>
+        <a href="#projects" class="nav-link" onclick="closeMobileMenu()">Projects</a>
+        <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a>
+      </nav>
+    </header>
+
+    <main id="top" class="page-grid" style="padding: 0; margin: 0; max-width: none;">
+      <!-- Intro Hero -->
+      <section class="hero-section" aria-labelledby="hero-heading">
+        <div class="hero-main">
+          <span class="kicker">Student Portfolio · Software &amp; Biology</span>
+          <h1 id="hero-heading" class="hero-title"><span class="hero-greeting">Hello I’m</span> Oğuz</h1>
+          <p class="hero-subtitle">QwertyR0 — Student Developer &amp; Biology Enthusiast</p>
+          <p class="hero-copy">
+            My projects are usually about FullStack Web Development, Node.JS and IoT Applications. I consider myself to be a 'Biology Enthusiast', I'm currently building a series of Ecological Tools that aim to improve mental modelling and conceptual visualization in learners (studying from textbooks like Ecology: Concepts and Applications, Concepts of Genetics by S. Klug, R. Cummings...) like myself.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <i class="ph ph-squares-four" aria-hidden="true"></i>
+              <span>Browse Projects</span>
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <i class="ph ph-envelope-simple" aria-hidden="true"></i>
+              <span>Contact</span>
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-panel" aria-label="Portfolio picture">
+          <img
+            class="profile-picture"
+            src="https://qwertyr0.is-a.dev/pic.jpg"
+            alt="Portrait of Oğuz"
+            loading="eager"
+            decoding="async"
+          >
+        </aside>
+      </section>
+
+      <!-- 2. Interests -->
+      <section id="interests" class="section-block reveal" aria-labelledby="interests-heading">
+        <div class="section-header">
+          <span class="kicker">Interests</span>
+          <h2 id="interests-heading" class="section-title">Biology Passion &amp; Ecological Learning Tools</h2>
+        </div>
+
+        <div class="interests-wrapper">
+          <div class="interests-grid">
+            <article class="card is-leaf-highlight">
+              <span class="kicker">Living Systems</span>
+              <h3 class="card-title">Understanding nature through software and observation</h3>
+              <p>
+                Beyond writing code, I have a deep enthusiasm for biology and how living systems organize, adapt, and interact across scales. I enjoy turning complex biological concepts into approachable ecological tools for learning—helping students like me visualize habitats, cellular mechanics, and ecologoical parameters interactively rather than memorization.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Projects -->
+      <section id="projects" class="section-block reveal" aria-labelledby="projects-heading">
+        <div class="section-header">
+          <span class="kicker">Selected Work</span>
+          <h2 id="projects-heading" class="section-title">Projects</h2>
+          <p class="section-lede">
+            It's late and I don't have the energy to write anymore corporate bullshit here, so feel free to check some cool stuff I've made below!
+          </p>
+        </div>
+
+        <div class="projects-toolbar">
+          <div class="filter-group" role="group" aria-label="Filter projects by category">
+            <button type="button" class="filter-btn" data-filter="all" aria-pressed="true" onclick="filterProjects('all', this)">All Projects</button>
+            <button type="button" class="filter-btn" data-filter="simulation" aria-pressed="false" onclick="filterProjects('simulation', this)">Engines &amp; Simulation</button>
+            <button type="button" class="filter-btn" data-filter="hardware" aria-pressed="false" onclick="filterProjects('hardware', this)">Hardware &amp; Aerodynamics</button>
+            <button type="button" class="filter-btn" data-filter="web" aria-pressed="false" onclick="filterProjects('web', this)">Web Platforms</button>
+          </div>
+          <span class="project-count" id="project-count-label" aria-live="polite">Showing 6 of 6 projects</span>
+        </div>
+
+        <div class="card-grid" id="projects-grid">
+          <!-- Project 1: Qngine -->
+          <article class="project-card" data-category="simulation">
+            <div class="project-top">
+              <div class="project-meta">
+                <span class="project-badge is-green">Desktop Engine</span>
+                <span class="project-index">01</span>
+              </div>
+              <h3 class="card-title">Qngine</h3>
+              <p class="project-desc">
+                Modular JavaScript game engine running on Node.js desktop environments.
+              </p>
+            </div>
+            <div class="project-footer">
+              <div class="project-actions">
+                <button
+                  type="button"
+                  class="note-toggle"
+                  aria-expanded="false"
+                  aria-controls="note-qngine"
+                  onclick="toggleProjectNote('note-qngine', this)"
+                >
+                  <i class="ph ph-caret-down" aria-hidden="true"></i>
+                  <span>Project notes</span>
+                </button>
+                <span class="project-domain">Node.js Desktop</span>
+              </div>
+              <div id="note-qngine" class="project-details" hidden>
+                <p>
+                  Built with a modular structure so core subsystems—rendering, input handling, and update loops—stay decoupled and straightforward to extend in JavaScript desktop runtimes.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: SALC -->
+          <article class="project-card" data-category="hardware">
+            <div class="project-top">
+              <div class="project-meta">
+                <span class="project-badge">Microcontroller</span>
+                <span class="project-index">02</span>
+              </div>
+              <h3 class="card-title">SALC</h3>
+              <p class="project-desc">
+                ATtiny85-based micro-computer interpreter inspired by Duo Tiny.
+              </p>
+            </div>
+            <div class="project-footer">
+              <div class="project-actions">
+                <button
+                  type="button"
+                  class="note-toggle"
+                  aria-expanded="false"
+                  aria-controls="note-salc"
+                  onclick="toggleProjectNote('note-salc', this)"
+                >
+                  <i class="ph ph-caret-down" aria-hidden="true"></i>
+                  <span>Project notes</span>
+                </button>
+                <span class="project-domain">ATtiny85</span>
+              </div>
+              <div id="note-salc" class="project-details" hidden>
+                <p>
+                  A physical programming language interpeter and simulator built around the constraints of ATtiny85. 
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: CellBoy -->
+          <article class="project-card" data-category="simulation">
+            <div class="project-top">
+              <div class="project-meta">
+                <span class="project-badge is-green">Handheld Sim</span>
+                <span class="project-index">03</span>
+              </div>
+              <h3 class="card-title">CellBoy</h3>
+              <p class="project-desc">
+                Cell Machine simulator created for Game Boy in C.
+              </p>
+            </div>
+            <div class="project-footer">
+              <div class="project-actions">
+                <button
+                  type="button"
+                  class="note-toggle"
+                  aria-expanded="false"
+                  aria-controls="note-cellboy"
+                  onclick="toggleProjectNote('note-cellboy', this)"
+                >
+                  <i class="ph ph-caret-down" aria-hidden="true"></i>
+                  <span>Project notes</span>
+                </button>
+                <span class="project-domain">Game Boy · C</span>
+              </div>
+              <div id="note-cellboy" class="project-details" hidden>
+                <p>
+                  Implements grid-based Cell Machine logic directly in C for classic Game Boy hardware constraints, recreating the once popular "Cell Machine" by Sam Hogan.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4: RC Autogyro Aerodynamics Analysis -->
+          <article class="project-card" data-category="hardware">
+            <div class="project-top">
+              <div class="project-meta">
+                <span class="project-badge is-ochre">Technical Guide</span>
+                <span class="project-index">04</span>
+              </div>
+              <h3 class="card-title">RC Autogyro Aerodynamics Analysis</h3>
+              <p class="project-desc">
+                Technical guide on RC autogyro autorotation aerodynamics.
+              </p>
+            </div>
+            <div class="project-footer">
+              <div class="project-actions">
+                <button
+                  type="button"
+                  class="note-toggle"
+                  aria-expanded="false"
+                  aria-controls="note-autogyro"
+                  onclick="toggleProjectNote('note-autogyro', this)"
+                >
+                  <i class="ph ph-caret-down" aria-hidden="true"></i>
+                  <span>Project notes</span>
+                </button>
+                <span class="project-domain">Guide</span>
+              </div>
+              <div id="note-autogyro" class="project-details" hidden>
+                <p>
+                  Breaks down autorotation rotor physics, inflow behavior, and aerodynamic stability principles for radio-controlled autogyros.
+                </p>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5: Veri Olimpiyatlari -->
+          <article class="project-card" data-category="web">
+            <div class="project-top">
+              <div class="project-meta">
+                <span class="project-badge">Web Platform</span>
+                <span class="project-index">05</span>
+              </div>
+              <h3 class="card-title">Veri Olimpiyatlari</h3>
+              <p class="project-desc">
+                Competition web platform (<a href="https://veriolimpiyati.com" target="_blank" rel="noopener noreferrer">veriolimpiyati.com</a>).
+              </p>
+            </div>
+            <div class="project-footer">
+              <div class="project-actions">
+                <button
+                  type="button"
+                  class="note-toggle"
+                  aria-expanded="false"
+                  aria-controls="note-veri"
+                  onclick="toggleProjectNote('note-veri', this)"
+                >
+                  <i class="ph ph-caret-down" aria-hidden="true"></i>
+                  <span>Project notes</span>
+                </button>
+                <span class="project-domain">veriolimpiyati.com</span>
+              </div>
+              <div id="note-veri" class="project-details" hidden>
+                <p>
+                  Dedicated competition portal supporting participants and event information at veriolimpiyati.com.
+                </p>
+                <button
+                  type="button"
+                  class="inline-copy-btn"
+                  onclick="copyTextValue('veriolimpiyati.com', this, 'Copy domain')"
+                >
+                  <i class="ph ph-copy" aria-hidden="true"></i>
+                  <span>Copy domain</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 6: Voting System -->
+          <article class="project-card" data-category="web">
+            <div class="project-top">
+              <div class="project-meta">
+                <span class="project-badge">Event Tool</span>
+                <span class="project-index">06</span>
+              </div>
+              <h3 class="card-title">Voting System</h3>
+              <p class="project-desc">
+                A Voting system designed for a school cosplay event.
+              </p>
+            </div>
+            <div class="project-footer">
+              <div class="project-actions">
+                <button
+                  type="button"
+                  class="note-toggle"
+                  aria-expanded="false"
+                  aria-controls="note-voting"
+                  onclick="toggleProjectNote('note-voting', this)"
+                >
+                  <i class="ph ph-caret-down" aria-hidden="true"></i>
+                  <span>Project notes</span>
+                </button>
+                <span class="project-domain">Event Operations</span>
+              </div>
+              <div id="note-voting" class="project-details" hidden>
+                <p>
+                  Purpose-built web voting system tailored to adapt last-minute changes by administrators.
+                </p>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4. Contact -->
+      <section id="contact" class="section-block reveal" aria-labelledby="contact-heading">
+        <div class="section-header">
+          <span class="kicker">Contact</span>
+          <h2 id="contact-heading" class="section-title">Get in Touch</h2>
+        </div>
+
+        <div class="contact-wrapper">
+          <div class="contact-panel">
+            <div class="contact-copy">
+              <span class="internship-badge">
+                <i class="ph ph-seedling" aria-hidden="true"></i>
+                <span>Open to Internship Inquiries</span>
+              </span>
+              <h3 class="card-title">Let's Talk!</h3>
+              <p class="section-lede">
+                I welcome internship inquires and new friends with common interests.
+              </p>
+            </div>
+
+            <div class="contact-channels">
+              <div class="channel-row">
+                <div class="channel-info">
+                  <span class="channel-label">Email</span>
+                  <span class="channel-value">qwerty.rcode@gmail.com</span>
+                </div>
+                <button
+                  type="button"
+                  class="channel-action"
+                  onclick="copyTextValue('qwerty.rcode@gmail.com', this, 'Copy email')"
+                >
+                  <i class="ph ph-copy" aria-hidden="true"></i>
+                  <span>Copy email</span>
+                </button>
+              </div>
+
+              <div class="channel-row">
+                <div class="channel-info">
+                  <span class="channel-label">GitHub</span>
+                  <span class="channel-value">github.com/QwertyR0</span>
+                </div>
+                <button
+                  type="button"
+                  class="channel-action"
+                  onclick="copyTextValue('github.com/QwertyR0', this, 'Copy GitHub')"
+                >
+                  <i class="ph ph-git-branch" aria-hidden="true"></i>
+                  <span>Copy GitHub</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <span id="copy-status-live" class="sr-only" aria-live="polite"></span>
+      </section>
+    </main>
+
+    <!-- 5. Footer -->
+    <footer class="site-footer">
+      <span>@QwertyR0</span>
+    </footer>
+  </div>
+
+  <script>
+    function toggleMobileMenu() {
+      var btn = document.getElementById('menu-toggle-btn');
+      var drawer = document.getElementById('mobile-nav-drawer');
+      if (!btn || !drawer) return;
+      var isOpen = drawer.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    }
+
+    function closeMobileMenu() {
+      var btn = document.getElementById('menu-toggle-btn');
+      var drawer = document.getElementById('mobile-nav-drawer');
+      if (!btn || !drawer) return;
+      drawer.classList.remove('is-open');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+
+    function filterProjects(category, activeBtn) {
+      var buttons = document.querySelectorAll('.filter-btn');
+      for (var i = 0; i < buttons.length; i++) {
+        buttons[i].setAttribute('aria-pressed', 'false');
+      }
+      if (activeBtn) {
+        activeBtn.setAttribute('aria-pressed', 'true');
+      }
+
+      var cards = document.querySelectorAll('#projects-grid .project-card');
+      var visibleCount = 0;
+      for (var j = 0; j < cards.length; j++) {
+        var cardCategory = cards[j].getAttribute('data-category');
+        var shouldShow = category === 'all' || cardCategory === category;
+        cards[j].hidden = !shouldShow;
+        if (shouldShow) visibleCount++;
+      }
+
+      var countLabel = document.getElementById('project-count-label');
+      if (countLabel) {
+        countLabel.textContent = `Showing ${visibleCount} of ${cards.length} projects`;
+      }
+    }
+
+    function toggleProjectNote(noteId, btn) {
+      var panel = document.getElementById(noteId);
+      if (!panel || !btn) return;
+      var isHidden = panel.hidden;
+      panel.hidden = !isHidden;
+      btn.setAttribute('aria-expanded', isHidden ? 'true' : 'false');
+      var labelSpan = btn.querySelector('span');
+      var iconEl = btn.querySelector('i');
+      if (labelSpan) {
+        labelSpan.textContent = isHidden ? `Hide notes` : `Project notes`;
+      }
+      if (iconEl) {
+        iconEl.className = isHidden ? `ph ph-caret-up` : `ph ph-caret-down`;
+      }
+    }
+
+    function copyTextValue(text, btn, defaultLabel) {
+      var statusEl = document.getElementById('copy-status-live');
+      function markCopied() {
+        if (!btn) return;
+        var span = btn.querySelector('span');
+        btn.classList.add('is-copied');
+        if (span) span.textContent = `Copied!`;
+        if (statusEl) statusEl.textContent = `Copied ${text} to clipboard.`;
+        window.setTimeout(function () {
+          btn.classList.remove('is-copied');
+          if (span) span.textContent = defaultLabel;
+        }, 1800);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(markCopied).catch(function () {
+          fallbackCopy(text, markCopied);
+        });
+      } else {
+        fallbackCopy(text, markCopied);
+      }
+    }
+
+    function fallbackCopy(text, onDone) {
+      var area = document.createElement('textarea');
+      area.value = text;
+      area.setAttribute('readonly', '');
+      area.style.position = 'fixed';
+      area.style.left = '-9999px';
+      document.body.appendChild(area);
+      area.select();
+      try {
+        document.execCommand('copy');
+      } catch (err) {
+        /* ignore copy fallback error */
+      }
+      document.body.removeChild(area);
+      if (onDone) onDone();
+    }
+
+    (function initScrollReveal() {
+      if (!('IntersectionObserver' in window)) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var nodes = document.querySelectorAll('.reveal');
+      if (!nodes.length) return;
+      var observer = new IntersectionObserver(function (entries) {
+        for (var i = 0; i < entries.length; i++) {
+          if (entries[i].isIntersecting) {
+            entries[i].target.classList.remove('is-pending');
+            observer.unobserve(entries[i].target);
+          }
+        }
+      }, { threshold: 0.1 });
+
+      for (var j = 0; j < nodes.length; j++) {
+        var rect = nodes[j].getBoundingClientRect();
+        if (rect.top > window.innerHeight * 0.92) {
+          nodes[j].classList.add('is-pending');
+        }
+        observer.observe(nodes[j]);
+      }
+    })();
+  </script>
+</body>
 </html>
