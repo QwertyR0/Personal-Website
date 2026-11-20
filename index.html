@@ -330,6 +330,8 @@
 
     /* Canopy-style Almanac Domain Strip & Summary Card */
     .hero-panel {
+      width: min(100%, 240px);
+      justify-self: end;
       background-color: var(--surface-container-low);
       border-radius: var(--rounded-lg);
       padding: var(--space-lg);
@@ -837,6 +839,9 @@
       .hero-section {
         grid-template-columns: 1fr;
       }
+      .hero-panel {
+        justify-self: center;
+      }
       .interests-grid {
         grid-template-columns: 1fr;
       }
@@ -846,6 +851,36 @@
       .page-grid {
         padding: var(--space-md);
         gap: var(--space-xl);
+      }
+      .hero-section {
+        grid-template-columns: minmax(0, 1fr) 76px;
+        column-gap: var(--space-md);
+      }
+      .hero-main {
+        display: contents;
+      }
+      .hero-panel {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        width: 76px;
+        padding: 0;
+        border: 0;
+        background: none;
+        box-shadow: none;
+      }
+      .hero-main > .kicker {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .hero-title {
+        grid-column: 1;
+        grid-row: 2;
+        align-self: center;
+      }
+      .hero-subtitle,
+      .hero-copy,
+      .hero-actions {
+        grid-column: 1 / -1;
       }
       .nav-links {
         display: none;
@@ -925,7 +960,7 @@
         <aside class="hero-panel" aria-label="Portfolio picture">
           <img
             class="profile-picture"
-            src="https://qwertyr0.is-a.dev/pic.jpg"
+            src="https://github.com/QwertyR0/Personal-Website/blob/main/public/pic.jpg?raw=true"
             alt="Portrait of Oğuz"
             loading="eager"
             decoding="async"
